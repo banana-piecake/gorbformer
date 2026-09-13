@@ -27,4 +27,4 @@ Reset : R, Enter
 Slow : Shift
 
 
-link : https://subzeroditto.itch.io/gorbformer​
+link :https://subzeroditto.itch.io/gorbformer​
