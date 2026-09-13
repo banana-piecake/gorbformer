@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1cnlseptqqg4" path="res://player.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://bjsvbwwxv4vd6" path="res://bricks.png" id="2_j2q8x"]
+[ext_resource type="AudioStream" uid="uid://bt0oy7f7quubi" path="res://gorbland.mp3" id="2_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://b7p5jrad3e7cf" path="res://gorb_1.png" id="2_tda05"]
 [ext_resource type="Texture2D" uid="uid://c32j6sn0twhsp" path="res://background.png" id="3_e2u21"]
 [ext_resource type="Texture2D" uid="uid://dl4cct4gib5ud" path="res://gorb_2.png" id="3_qn3nj"]
@@ -44,6 +45,11 @@ sources/0 = SubResource("TileSetAtlasSource_112p8")
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1741145674]
 position = Vector2(16, 622)
 script = ExtResource("1_112p8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player" unique_id=2034363801]
+stream = ExtResource("2_qn3nj")
+volume_db = -0.09
+autoplay = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=312811240]
 position = Vector2(7.999999, 10.000009)

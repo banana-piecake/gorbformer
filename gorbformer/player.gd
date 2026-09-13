@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
+const SPEED = 4.0
 const JUMP_VELOCITY = -200.0
 const AIR_FLOAT_VELOCITY = -10.0
 
@@ -23,8 +23,8 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = velocity.x + direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x * 0.5, 0, SPEED)
 
 	move_and_slide()
