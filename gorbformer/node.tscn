@@ -1,9 +1,19 @@
 [gd_scene format=3 uid="uid://cb7uldch8st48"]
 
 [ext_resource type="Texture2D" uid="uid://ddiuc1v8iyyof" path="res://icon.svg" id="1_sy5k4"]
+[ext_resource type="Texture2D" uid="uid://bjsvbwwxv4vd6" path="res://bricks.png" id="2_j2q8x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bot31"]
 size = Vector2(61, 63)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_112p8"]
+texture = ExtResource("2_j2q8x")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_bot31"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_112p8")
 
 [node name="Node" type="Node" unique_id=1313194293]
 
@@ -17,3 +27,6 @@ texture = ExtResource("1_sy5k4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1164292739]
 position = Vector2(33.5, 32.5)
 shape = SubResource("RectangleShape2D_bot31")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=166964716]
+tile_set = SubResource("TileSet_bot31")
