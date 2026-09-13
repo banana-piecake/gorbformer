@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dl4cct4gib5ud" path="res://gorb_2.png" id="3_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://cdemn4meo3og5" path="res://gorb_3.png" id="4_l6pdb"]
 [ext_resource type="Script" uid="uid://cln1rquvsoaxm" path="res://label.gd" id="6_l6pdb"]
+[ext_resource type="Shader" uid="uid://d2opcj8i58v30" path="res://node.gdshader" id="8_r657h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dhs5g"]
 animations = [{
@@ -31,6 +32,11 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bot31"]
 size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r657h"]
+shader = ExtResource("8_r657h")
+shader_parameter/speed = 2.0
+shader_parameter/frequency = 5.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_112p8"]
 texture = ExtResource("2_j2q8x")
@@ -67,6 +73,17 @@ shape = SubResource("RectangleShape2D_bot31")
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Player/Camera2D" unique_id=270509038]
+
+[node name="ColorRect" type="ColorRect" parent="Player/Camera2D/CanvasLayer2" unique_id=1930463324]
+material = SubResource("ShaderMaterial_r657h")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.34509805)
 
 [node name="Label" type="Label" parent="Player/Camera2D" unique_id=1097759988]
 offset_left = -12.0
