@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceu7ywi426te4"]
+
+[ext_resource type="Texture2D" uid="uid://dkla5s6c5e4au" path="res://player.jpg" id="2_dqwkj"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.56579, 3.07086, 0.926435)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44377, 0)
+disabled = true
+polygon = PackedVector2Array(-0.00691792, 0.220496, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D"]
+texture = ExtResource("2_dqwkj")
