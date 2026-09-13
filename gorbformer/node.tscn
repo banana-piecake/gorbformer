@@ -31,6 +31,11 @@ texture = ExtResource("1_sy5k4")
 position = Vector2(11, 9)
 shape = SubResource("RectangleShape2D_bot31")
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=101377202]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=166964716]
 tile_map_data = PackedByteArray("AAABACgAAAAAAAAAAAACACgAAAAAAAAAAAADACgAAAAAAAAAAAADACcAAAAAAAAAAAAEACcAAAAAAAAAAAAEACYAAAAAAAAAAAAFACYAAAAAAAAAAAAIACUAAAAAAAAAAAAJACUAAAAAAAAAAAANACMAAAAAAAAAAAAOACMAAAAAAAAAAAATACIAAAAAAAAAAAAUACIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_bot31")
