@@ -32,6 +32,11 @@ func _physics_process(delta: float) -> void:
 	# same for left
 	elif velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true
+	if Input.is_action_pressed("slow"):
+		velocity.x = 0
+		velocity.y = 0
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
+		#Engine.time_scale = 1
+
 	move_and_slide()
