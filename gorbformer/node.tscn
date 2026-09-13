@@ -1,9 +1,31 @@
 [gd_scene format=4 uid="uid://cb7uldch8st48"]
 
 [ext_resource type="Script" uid="uid://1cnlseptqqg4" path="res://player.gd" id="1_112p8"]
-[ext_resource type="Texture2D" uid="uid://ddiuc1v8iyyof" path="res://icon.svg" id="1_sy5k4"]
 [ext_resource type="Texture2D" uid="uid://bjsvbwwxv4vd6" path="res://bricks.png" id="2_j2q8x"]
+[ext_resource type="Texture2D" uid="uid://b7p5jrad3e7cf" path="res://gorb_1.png" id="2_tda05"]
 [ext_resource type="Texture2D" uid="uid://c32j6sn0twhsp" path="res://background.png" id="3_e2u21"]
+[ext_resource type="Texture2D" uid="uid://dl4cct4gib5ud" path="res://gorb_2.png" id="3_qn3nj"]
+[ext_resource type="Texture2D" uid="uid://cdemn4meo3og5" path="res://gorb_3.png" id="4_l6pdb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhs5g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tda05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qn3nj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l6pdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qn3nj")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bot31"]
 size = Vector2(16, 16)
@@ -23,10 +45,12 @@ sources/0 = SubResource("TileSetAtlasSource_112p8")
 position = Vector2(16, 622)
 script = ExtResource("1_112p8")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1778508493]
-position = Vector2(8, 10)
-scale = Vector2(0.125, 0.12499999)
-texture = ExtResource("1_sy5k4")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=312811240]
+position = Vector2(7.999999, 10.000009)
+scale = Vector2(0.22222221, 0.22222227)
+sprite_frames = SubResource("SpriteFrames_dhs5g")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1164292739]
 position = Vector2(8, 10)
@@ -47,5 +71,5 @@ texture = ExtResource("3_e2u21")
 stretch_mode = 4
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=166964716]
-tile_map_data = PackedByteArray("AAABACgAAAAAAAAAAAACACgAAAAAAAAAAAADACgAAAAAAAAAAAADACcAAAAAAAAAAAAEACcAAAAAAAAAAAAEACYAAAAAAAAAAAAFACYAAAAAAAAAAAAIACUAAAAAAAAAAAAJACUAAAAAAAAAAAANACMAAAAAAAAAAAAOACMAAAAAAAAAAAATACIAAAAAAAAAAAAUACIAAAAAAAAAAAAXACEAAAAAAAAAAAAYACEAAAAAAAAAAAAbACAAAAAAAAAAAAAdAB4AAAAAAAAAAAAgAB0AAAAAAAAAAAAhAB0AAAAAAAAAAAAjAB8AAAAAAAAAAAAkAB8AAAAAAAAAAAAmACEAAAAAAAAAAAAoAB8AAAAAAAAAAAAsAB8AAAAAAAAAAAAwAB4AAAAAAAAAAAAxABwAAAAAAAAAAAAzABwAAAAAAAAAAAA2ABsAAAAAAAAAAAA5ABkAAAAAAAAAAAA7ABcAAAAAAAAAAAA3ABYAAAAAAAAAAAAzABUAAAAAAAAAAAAuABQAAAAAAAAAAAAwABMAAAAAAAAAAAAqABUAAAAAAAAAAAAoABMAAAAAAAAAAAAkABIAAAAAAAAAAAAgABIAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABACgAAAAAAAAAAAACACgAAAAAAAAAAAADACgAAAAAAAAAAAADACcAAAAAAAAAAAAEACcAAAAAAAAAAAAEACYAAAAAAAAAAAAFACYAAAAAAAAAAAAIACUAAAAAAAAAAAAJACUAAAAAAAAAAAANACMAAAAAAAAAAAAOACMAAAAAAAAAAAATACIAAAAAAAAAAAAUACIAAAAAAAAAAAAXACEAAAAAAAAAAAAYACEAAAAAAAAAAAAbACAAAAAAAAAAAAAdAB4AAAAAAAAAAAAgAB0AAAAAAAAAAAAhAB0AAAAAAAAAAAAjAB8AAAAAAAAAAAAkAB8AAAAAAAAAAAAmACEAAAAAAAAAAAAoAB8AAAAAAAAAAAAsAB8AAAAAAAAAAAAwAB4AAAAAAAAAAAAxABwAAAAAAAAAAAAzABwAAAAAAAAAAAA2ABsAAAAAAAAAAAA5ABkAAAAAAAAAAAA7ABcAAAAAAAAAAAA3ABYAAAAAAAAAAAAzABUAAAAAAAAAAAAuABQAAAAAAAAAAAAwABMAAAAAAAAAAAAqABUAAAAAAAAAAAAoABMAAAAAAAAAAAAkABIAAAAAAAAAAAAgABIAAAAAAAAAAAAcABIAAAAAAAAAAAAYABEAAAAAAAAAAAAUABAAAAAAAAAAAAAQABMAAAAAAAAAAAAMABIAAAAAAAAAAAAIABAAAAAAAAAAAAAGAA4AAAAAAAAAAAAKAAwAAAAAAAAAAAAOAAsAAAAAAAAAAAATAAoAAAAAAAAAAAAYAAkAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_bot31")
