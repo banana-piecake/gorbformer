@@ -39,9 +39,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("slow"):
 		velocity.x = 0
 		velocity.y = 0
+	if Input.is_action_just_released("slow") and Input.is_action_pressed("right") and air_dash == 1:
+		velocity.x = 270
+	if Input.is_action_just_released("slow") and Input.is_action_pressed("left") and air_dash == 1:
+		velocity.x = -270
+	if Input.is_action_just_released("slow") and Input.is_action_pressed("jump") and air_dash == 1:
+		velocity.y = -270
+	if Input.is_action_just_released("slow") and Input.is_action_pressed("down") and air_dash == 1:
+		velocity.y = 270
 	if Input.is_action_just_released("slow") and air_dash == 1:
-		velocity.x = 0
-		velocity.y = -400
 		air_dash = 0
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
