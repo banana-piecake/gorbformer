@@ -4,12 +4,16 @@ extends CharacterBody2D
 const SPEED = 4.0
 const JUMP_VELOCITY = -200.0
 const AIR_FLOAT_VELOCITY = -10.0
+var air_dash = 0
 
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	if is_on_floor():
+		air_dash = 1
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -35,6 +39,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("slow"):
 		velocity.x = 0
 		velocity.y = 0
+	if Input.is_action_just_released("slow") and air_dash == 1:
+		velocity.x = 0
+		velocity.y = -400
+		air_dash = 0
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 		#Engine.time_scale = 1
