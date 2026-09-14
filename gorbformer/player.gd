@@ -6,11 +6,12 @@ const SPEED = 4.0
 const JUMP_VELOCITY = -200.0
 const AIR_FLOAT_VELOCITY = -10.0
 var air_dash = 0
+var godmode = 0
 
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and godmode == 0:
 		velocity += get_gravity() * delta
 		
 	if is_on_floor():
@@ -23,6 +24,12 @@ func _physics_process(delta: float) -> void:
 	# air float thingy.
 	if Input.is_action_pressed("jump") and not is_on_floor():
 		velocity.y = velocity.y + AIR_FLOAT_VELOCITY
+	if Input.is_action_pressed("jump") and godmode == 1:
+		velocity.y = -180
+	if Input.is_action_pressed("down") and godmode == 1:
+		velocity.y = 180
+	if not is_on_floor() and godmode == 1:
+		velocity.y = move_toward(velocity.y * 0.5, 0, SPEED)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -53,6 +60,8 @@ func _physics_process(delta: float) -> void:
 		cloud_particles.restart()
 		cloud_particles.emitting = true
 		dash_sfx.play()
+	if Input.is_action_just_pressed("godmode"):
+		godmode = 1 - godmode
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 		#Engine.time_scale = 1
