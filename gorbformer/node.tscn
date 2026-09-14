@@ -2,14 +2,40 @@
 
 [ext_resource type="Script" uid="uid://1cnlseptqqg4" path="res://player.gd" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://bjsvbwwxv4vd6" path="res://bricks.png" id="2_j2q8x"]
+[ext_resource type="Texture2D" uid="uid://bfuwooh1sqx6w" path="res://cloud.png" id="2_jfkdj"]
 [ext_resource type="AudioStream" uid="uid://bt0oy7f7quubi" path="res://gorbland.mp3" id="2_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://b7p5jrad3e7cf" path="res://gorb_1.png" id="2_tda05"]
+[ext_resource type="AudioStream" uid="uid://ljxpgeyojtkl" path="res://dash.mp3" id="2_wt6go"]
 [ext_resource type="Texture2D" uid="uid://c32j6sn0twhsp" path="res://background.png" id="3_e2u21"]
 [ext_resource type="Texture2D" uid="uid://dl4cct4gib5ud" path="res://gorb_2.png" id="3_qn3nj"]
 [ext_resource type="Texture2D" uid="uid://cdemn4meo3og5" path="res://gorb_3.png" id="4_l6pdb"]
 [ext_resource type="Script" uid="uid://cln1rquvsoaxm" path="res://label.gd" id="6_l6pdb"]
 [ext_resource type="Shader" uid="uid://d2opcj8i58v30" path="res://node.gdshader" id="8_r657h"]
 [ext_resource type="Texture2D" uid="uid://8jx8yvfwhmpf" path="res://blimbo.png" id="10_f0urt"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wt6go"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.4, 0.4, 0.4)
+emission_shape = 1
+emission_sphere_radius = 12.07
+angle_min = -245.5
+angle_max = 278.2
+use_rotation_3d = true
+inherit_velocity_ratio = 0.138
+velocity_pivot = Vector3(2, 2, 0)
+direction = Vector3(2, 2, 0)
+flatness = 0.41
+initial_velocity_min = 102.27
+initial_velocity_max = 488.62997
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 261.80997
+orbit_velocity_min = -1.045
+orbit_velocity_max = -0.2729999
+radial_velocity_min = -454.54
+radial_velocity_max = 272.72998
+gravity = Vector3(0, -10, 0)
+scale_min = 0.19999999
+scale_max = 0.19999999
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dhs5g"]
 animations = [{
@@ -32,7 +58,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bot31"]
-size = Vector2(16, 16)
+size = Vector2(12, 14)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r657h"]
 shader = ExtResource("8_r657h")
@@ -53,6 +79,28 @@ sources/0 = SubResource("TileSetAtlasSource_112p8")
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1741145674]
 position = Vector2(16, 622)
 script = ExtResource("1_112p8")
+
+[node name="dash" type="AudioStreamPlayer2D" parent="Player" unique_id=1348165196]
+stream = ExtResource("2_wt6go")
+
+[node name="cloud_particles" type="GPUParticles2D" parent="Player" unique_id=1140751947]
+position = Vector2(8, 17)
+scale = Vector2(0.2, 0.2)
+skew = -0.30194196
+emitting = false
+amount = 24
+amount_ratio = 0.836
+texture = ExtResource("2_jfkdj")
+lifetime = 0.81
+one_shot = true
+preprocess = 0.05
+speed_scale = 1.07
+explosiveness = 0.08
+randomness = 0.08
+collision_base_size = 3.16
+draw_order = 0
+trail_lifetime = 1.35
+process_material = SubResource("ParticleProcessMaterial_wt6go")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player" unique_id=2034363801]
 stream = ExtResource("2_qn3nj")

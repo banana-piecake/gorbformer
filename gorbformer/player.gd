@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-
+@onready var cloud_particles = $cloud_particles
+@onready var dash_sfx = $dash
 const SPEED = 4.0
 const JUMP_VELOCITY = -200.0
 const AIR_FLOAT_VELOCITY = -10.0
@@ -49,6 +50,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 270
 	if Input.is_action_just_released("slow") and air_dash == 1:
 		air_dash = 0
+		cloud_particles.restart()
+		cloud_particles.emitting = true
+		dash_sfx.play()
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 		#Engine.time_scale = 1
