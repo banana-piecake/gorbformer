@@ -7,8 +7,13 @@ const JUMP_VELOCITY = -200.0
 const AIR_FLOAT_VELOCITY = -10.0
 var air_dash = 0
 var godmode = 0
+@onready var tilemap = $"../TileMapLayer"
 
+func place_tile_at_feet():
+	var feet_position = global_position + Vector2(0, 16)
+	var tile_position: Vector2i = tilemap.local_to_map(feet_position)
 
+	tilemap.set_cell(tile_position, 0, Vector2i(0, 0))
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor() and godmode == 0:
@@ -62,6 +67,7 @@ func _physics_process(delta: float) -> void:
 		dash_sfx.play()
 	if Input.is_action_just_pressed("godmode"):
 		godmode = 1 - godmode
+		place_tile_at_feet()
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 		#Engine.time_scale = 1
