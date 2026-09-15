@@ -67,6 +67,7 @@ func _physics_process(delta: float) -> void:
 		dash_sfx.play()
 	if Input.is_action_just_pressed("godmode"):
 		godmode = 1 - godmode
+	if Input.is_action_just_pressed("tile") and godmode == 1:
 		place_tile_at_feet()
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
